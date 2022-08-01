@@ -1,20 +1,37 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
+
+import LoginScreen from './screens/LoginScreen';
+import SignUpScreen from './screens/SignUpScreen';
+import IndexScreen from './screens/IndexScreen';
+import { Colors } from './constants/colors';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+        name="Login" 
+        component={LoginScreen}
+        options={{
+          name:"Login",
+          animation:'fade',
+          headerTitle: () => (
+            <Image style={{width:"100%", maxHeight:70,backgroundColor:Colors.background}}
+            source={require('./assets/images/america-shield.png')}
+            resizeMode='center' />
+          )          
+        }}
+         />
+      </Stack.Navigator> 
+    </NavigationContainer>
+ );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
 });
