@@ -38,6 +38,20 @@ export default function App() {
           )          
         }}
          />
+         <Stack.Screen
+         name="Index"
+         component={IndexScreen}
+         options={{
+          name:"Index",
+          animation:'fade'
+         }}  />
+         <Stack.Screen
+         name="Signup"
+         component={SignUpScreen}
+         options={{
+          name:"Signup",
+          animation:'fade'
+         }} />
       </Stack.Navigator> 
     </NavigationContainer>
  );

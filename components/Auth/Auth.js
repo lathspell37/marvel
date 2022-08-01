@@ -1,4 +1,5 @@
 import {View, StyleSheet, Pressable, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import Button from "../UI/Button";
 import Input from "../UI/Input";
@@ -9,8 +10,14 @@ import { Colors } from "../../constants/colors";
 
 function Auth(){
 
+    const navigation = useNavigation();
+
     function onConfirmPress(){
-        console.log("pressed")
+        navigation.navigate('Index');
+    }
+
+    function onSignupText(){
+        navigation.navigate('Signup');
     }
 
     return(
@@ -32,7 +39,7 @@ function Auth(){
                 </View>
             </View>
             <View style={styles.textContainer}>
-                <Pressable style={({pressed}) => pressed && styles.pressedText}>
+                <Pressable onPress={onSignupText} style={({pressed}) => pressed && styles.pressedText}>
                     <Text style={styles.text}>
                         If you don't have an account, please tap me!
                     </Text>
