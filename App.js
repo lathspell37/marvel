@@ -2,6 +2,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Image } from 'react-native';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
@@ -11,6 +13,15 @@ import { Colors } from './constants/colors';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  const [fontLoading] = useFonts({
+    'marvelFont': require('./assets/fonts/Marvel-Regular.ttf')
+  });
+
+  if(!fontLoading){
+    return <AppLoading />
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

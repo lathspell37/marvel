@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
     text:{
         fontSize:16,
         fontWeight:'bold',
-        color: Colors.primary500,
+        color: Colors.primary300,
+        fontFamily:'marvelFont'
         
     },
     textContainer:{

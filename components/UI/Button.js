@@ -6,7 +6,7 @@ function Button({onPress}){
             <Pressable onPress={onPress} style={({pressed}) => pressed && styles.pressed} >
                 <Image 
                 style={styles.img}
-                source={require('../../assets/images/hulk-fist-button.png')} />
+                source={require('../../assets/images/hulk-fist-button-w.png')} />
             </Pressable>
         </View>)
 }

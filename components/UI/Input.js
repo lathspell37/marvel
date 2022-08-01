@@ -11,7 +11,7 @@ function Input({placeholder, keyboardType, onChangeText, pass}){
             onChangeText={onChangeText}
             textAlign='center'
             secureTextEntry={pass}
-            placeholderTextColor={Colors.primary500}
+            placeholderTextColor={Colors.primary300}
             />
        
     )
