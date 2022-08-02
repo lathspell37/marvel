@@ -1,14 +1,22 @@
-import {StyleSheet} from 'react-native';
-import Loading from '../components/UI/Loading';
+import {StyleSheet, View} from 'react-native';
+import SignupForm from '../components/Auth/SignupForm';
+import { Colors } from '../constants/colors';
+
 
 function SignUpScreen(){
     return(
-        <Loading />
+        <View style={styles.container}>
+            <SignupForm />
+        </View>
+        
     )
 }
 
 export default SignUpScreen;
 
 const styles = StyleSheet.create({
-    
+    container:{
+        backgroundColor:Colors.primary100,
+        flex:1
+    }
 })

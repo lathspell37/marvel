@@ -50,7 +50,12 @@ export default function App() {
          component={SignUpScreen}
          options={{
           name:"Signup",
-          animation:'fade'
+          animation:'fade',
+          headerTitle: () => (
+            <Image style={{width:"100%", maxHeight:70,backgroundColor:Colors.background}}
+            source={require('./assets/images/america-shield.png')}
+            resizeMode='center' />
+          )         
          }} />
       </Stack.Navigator> 
     </NavigationContainer>
