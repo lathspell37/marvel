@@ -1,5 +1,5 @@
 import {StyleSheet, View, Text,Image} from 'react-native';
-
+import React from 'react';
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import Images from "../UI/Images";

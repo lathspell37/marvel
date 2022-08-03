@@ -1,6 +1,6 @@
 import {View, StyleSheet, Pressable, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
+import React from 'react';
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import Images from "../UI/Images";
@@ -78,8 +78,7 @@ const styles = StyleSheet.create({
     text:{
         fontSize:16,
         fontWeight:'bold',
-        color: Colors.primary300,
-        fontFamily:'marvelFont'
+        color: Colors.primary300,        
         
     },
     textContainer:{

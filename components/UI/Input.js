@@ -1,6 +1,6 @@
 import { StyleSheet, TextInput, View } from "react-native";
 import { Colors } from "../../constants/colors";
-
+import React from 'react';
 function Input({placeholder, keyboardType, onChangeText, pass}){
     return (
         

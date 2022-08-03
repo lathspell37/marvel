@@ -1,5 +1,5 @@
 import { StyleSheet, Pressable, Image, View } from "react-native";
-
+import React from 'react';
 function Button({onPress}){
     return(    
         <View styles={styles.container}>

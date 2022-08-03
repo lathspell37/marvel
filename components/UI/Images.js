@@ -1,5 +1,5 @@
 import {StyleSheet, Image, View} from 'react-native';
-
+import React from 'react';
 function Images(){
     return(
         <View style={styles.outerContainer}>

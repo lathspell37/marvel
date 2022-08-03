@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import SignupForm from '../components/Auth/SignupForm';
 import { Colors } from '../constants/colors';
-
+import React from 'react';
 
 function SignUpScreen(){
     return(
