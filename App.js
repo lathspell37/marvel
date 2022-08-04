@@ -22,26 +22,21 @@ export default function App() {
         component={LoginScreen}
         options={{
           name:"Login",          
-          headerTitle: () => (
-            <Image style={{width:"100%", maxHeight:70,backgroundColor:Colors.background}}
-            source={require('./assets/images/america-shield.png')}
-            resizeMode='center' />
-          )          
+        headerShown:false      
         }}
          />
          <Stack.Screen
          name="Index"
          component={IndexScreen}
          options={{
-          name:"Index",          
+          name:"Index",
+          headerShown:false          
          }}  />
          <Stack.Screen
          name="Signup"
          component={SignUpScreen}
          options={{    
-          headerBackImageSource: () => (<BackIcon />),
-            headerTitle:'' ,
-                          
+          headerShown:false                          
          }} />
       </Stack.Navigator> 
     </NavigationContainer>
