@@ -1,10 +1,15 @@
-import {Image} from 'react-native'
+import {Image,Pressable} from 'react-native'
+import React from 'react';
 
-function BackIcon(){
+
+function BackIcon({onPress}){
     return(
-        <Image
-        style={{width:25,height:25}}
-        source={require('../../assets/images/marvel-folder.png')} />
+        <Pressable onPress={onPress}>
+            <Image
+            style={{width:100,height:100}}
+            source={require('../../assets/images/hulk-fist.png')} />
+        </Pressable>
+
     )
 }
 

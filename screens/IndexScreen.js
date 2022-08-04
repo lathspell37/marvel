@@ -1,12 +1,13 @@
-import {StyleSheet,Text} from 'react-native';
+import {StyleSheet,View} from 'react-native';
 import auth from "@react-native-firebase/auth";
 import React from 'react';
+import Index from '../components/Index';
 
 function IndexScreen(){
     return(
-        <Text>
-            WELCOME
-        </Text>
+        <View>
+            <Index />
+        </View>        
     )
 }
 

@@ -29,7 +29,8 @@ function Auth(){
             await auth()
             .signInWithEmailAndPassword(eMail, password)
             .then(res => {                
-                navigation.navigate('Index');                
+                navigation.navigate('Index');  
+                setEntering(false)              
             })
             .catch(err => {
                 setEntering(false)
