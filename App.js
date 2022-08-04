@@ -30,7 +30,7 @@ export default function App() {
          component={IndexScreen}
          options={{
           name:"Index",
-          headerShown:false          
+          headerShown:false,                    
          }}  />
          <Stack.Screen
          name="Signup"

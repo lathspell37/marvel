@@ -1,10 +1,49 @@
-import {StyleSheet, View, Text,Image} from 'react-native';
-import React from 'react';
+import {StyleSheet, View, Text,Image, Alert} from 'react-native';
+import React, { useState } from 'react';
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import { Colors } from '../../constants/colors';
+import auth from "@react-native-firebase/auth";
+import { useNavigation } from '@react-navigation/native';
+import Loading from '../UI/Loading';
 
 function SignupForm(){
+    const [eMail, setEMail] = useState();
+    const [password, setPassword] = useState();
+    const navigation = useNavigation();
+
+    const [isAdding, setIsAdding] = useState(false);
+
+    if(isAdding){
+        return (
+            <Loading />
+        );
+     }
+
+    async function onLoginHandler(){
+        setIsAdding(true)
+        if(eMail && password){
+            await auth()
+            .createUserWithEmailAndPassword(eMail,password)
+            .then(res => {
+                //goBack() bi önceki sayfaya g+ö++nde+rir, geldiği sayfaya
+                navigation.goBack();
+                Alert.alert('Done!','Registration Is Completed')
+            }).catch(err => {
+                setIsAdding(false);
+                if(err.code === 'auth/weak-password')
+                    Alert.alert('Weak Password', 'Please Enter Minimum 6 Digits')
+                else if(err.code === 'auth/invalid-email')
+                    Alert.alert('Invalid Email','Please Enter Valid Email')
+            })
+        }
+        
+        //const user = auth().currentUser // giriş yapılan kullanıcı bilgileirni getirir.
+        
+        //auth().signOut() // çıkış yapmanı sağlar, 
+
+    }
+  
     return(
         <View style={styles.container}>
             <View style={styles.imgContainer}>
@@ -14,13 +53,16 @@ function SignupForm(){
             <View style={styles.inputContainer}>
                     <Input
                     style={styles.inputs}
-                    placeholder={"EMAIL"} />
+                    placeholder={"EMAIL"}
+                    onChangeText={setEMail} />
                     <Input
                     style={styles.inputs}
-                    placeholder={"PASSWORD"} />
+                    placeholder={"PASSWORD"}
+                    onChangeText={setPassword} />
             </View>  
             <View style={styles.buttonContainer}>
-                    <Button style={styles.button} />
+                    <Button style={styles.button}
+                    onPress={onLoginHandler} />
             </View>         
                 
             

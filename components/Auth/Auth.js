@@ -1,25 +1,53 @@
-import {View, StyleSheet, Pressable, Text } from "react-native";
+import {View, StyleSheet, Pressable, Text, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import React from 'react';
+import React, { useState } from 'react';
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import Images from "../UI/Images";
-
+import Loading from "../UI/Loading";
 import { Colors } from "../../constants/colors";
 
+import auth from "@react-native-firebase/auth";
 
 function Auth(){
 
+    const [eMail, setEMail] = useState();
+    const [password, setPassword] = useState();
     const navigation = useNavigation();
 
-    function onConfirmPress(){
-        navigation.navigate('Index');
+    const [isEntering, setEntering] = useState(false)
+
+    if(isEntering){
+        return (
+            <Loading />
+        );
+     }
+
+    async function onConfirmPress(){
+        setEntering(true)
+        if(eMail && password){
+            await auth()
+            .signInWithEmailAndPassword(eMail, password)
+            .then(res => {                
+                navigation.navigate('Index');                
+            })
+            .catch(err => {
+                setEntering(false)
+                if(err.code === 'auth/wrong-password')
+                    Alert.alert('Wrong Password', 'Please Try Again')
+                else if (err.code === 'auth/too-many-requests')
+                    Alert.alert('Too Many Request', 'Please Try Later')
+                else if (err.code === 'auth/user-not-found')
+                    Alert.alert('Wrong Email','Email Cannot Found')
+                console.log(err.code);
+            })
+        }
     }
 
     function onSignupText(){
         navigation.navigate('Signup');
     }
-
+    
     return(
         <View style={styles.container}>
             <View style={styles.imgContainer}>
@@ -28,11 +56,15 @@ function Auth(){
             <View style={styles.outerContainer}>
                 <View style={styles.inputContainer}>
                     <Input                     
-                    placeholder={"USERNAME"} />
-                    <Input                    
+                    placeholder={"E-Mail"} 
+                    onChangeText={setEMail}/>
+                    <Input  
+                    onChangeText={setPassword} 
                     placeholder={"PASSWORD"}
                     keyboardType={'numeric'}
-                    secureTextEntry={true} />
+                    secureTextEntry={true}
+                    textContentType="newPassword"
+                     />
                 </View>
                 <View style={styles.buttonContainer}>
                     <Button onPress={onConfirmPress} />

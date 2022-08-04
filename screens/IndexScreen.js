@@ -1,10 +1,12 @@
-import {StyleSheet} from 'react-native';
-import Loading from '../components/UI/Loading';
+import {StyleSheet,Text} from 'react-native';
+import auth from "@react-native-firebase/auth";
 import React from 'react';
 
 function IndexScreen(){
     return(
-        <Loading />
+        <Text>
+            WELCOME
+        </Text>
     )
 }
 
