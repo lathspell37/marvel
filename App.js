@@ -6,6 +6,12 @@ import BackIcon from './components/UI/BackIcon';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import IndexScreen from './screens/IndexScreen';
+import CharacterScreen from './screens/CharacterScreen'
+import ComicScreen from './screens/ComicScreen'
+import CreatorScreen from './screens/CreatorScreen'
+import EventScreen from './screens/EventScreen'
+import SeriesScreen from './screens/SeriesScreen'
+import StoriesScreen from './screens/StoriesScreen'
 import { Colors } from './constants/colors';
 
 
@@ -35,6 +41,42 @@ export default function App() {
          <Stack.Screen
          name="Signup"
          component={SignUpScreen}
+         options={{    
+          headerShown:false                          
+         }} />
+         <Stack.Screen
+         name="Character"
+         component={CharacterScreen}
+         options={{    
+          headerShown:false                          
+         }} />
+         <Stack.Screen
+         name="Comic"
+         component={ComicScreen}
+         options={{    
+          headerShown:false                          
+         }} />
+         <Stack.Screen
+         name="Creator"
+         component={CreatorScreen}
+         options={{    
+          headerShown:false                          
+         }} />
+         <Stack.Screen
+         name="Event"
+         component={EventScreen}
+         options={{    
+          headerShown:false                          
+         }} />
+         <Stack.Screen
+         name="Series"
+         component={SeriesScreen}
+         options={{    
+          headerShown:false                          
+         }} />
+         <Stack.Screen
+         name="Stories"
+         component={StoriesScreen}
          options={{    
           headerShown:false                          
          }} />
