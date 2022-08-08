@@ -1,7 +1,7 @@
 import {StyleSheet,View} from 'react-native';
 import auth from "@react-native-firebase/auth";
 import React from 'react';
-import Index from '../components/Index';
+import Index from '../components/models/Index';
 
 function IndexScreen(){
     return(

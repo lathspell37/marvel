@@ -1,8 +1,11 @@
 import {StyleSheet, View} from 'react-native';
 import Auth from '../components/Auth/Auth';
 import { Colors } from '../constants/colors';
-import React from 'react';
+import React, {useEffect} from 'react';
+import getCharacters from "../components/API/requests";
+
 function LoginScreen(){
+    
     return(
         <View style={styles.container}>
             <Auth />
