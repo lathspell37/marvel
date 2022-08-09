@@ -111,7 +111,8 @@ const styles = StyleSheet.create({
     text:{
         fontSize:16,
         fontWeight:'bold',
-        color: Colors.primary300,        
+        color: Colors.primary300,
+        fontFamily:'Marvel-Regular'      
         
     },
     textContainer:{

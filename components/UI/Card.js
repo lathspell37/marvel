@@ -7,8 +7,8 @@ import { Colors } from '../../constants/colors';
 function CardItem({title, onPress, img}){
     return(
         <Card style={styles.cardContainer} onPress={onPress}>
-            <Card.Content style={styles.title}>
-            <Title>{title}</Title>
+            <Card.Content style={styles.titleContainer}>
+            <Title style={styles.title}>{title}</Title>
             </Card.Content>
             <Card.Cover 
             source={img}
@@ -20,16 +20,21 @@ function CardItem({title, onPress, img}){
 export default CardItem;
 
 const styles = StyleSheet.create({
-    title:{
+    titleContainer:{
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        marginBottom:'7%',
+  
+    },
+    title:{
+        fontFamily:'Marvel-Regular',
+        fontSize:24,
+        fontWeight:'bold'         
     },
     cover:{
         borderRadius:8,
-        borderWidth: 1,
-        borderColor: Colors.primary400,
         marginHorizontal:'10%',
-        marginBottom:'5%'
+        marginBottom:'5%',              
     },
     button: {
         alignItems:'center',
@@ -37,6 +42,11 @@ const styles = StyleSheet.create({
     },
     cardContainer:{
         alignContent:'center',
-        margin:'5%'        
+        margin:'5%',
+        borderRadius:8,
+        borderWidth: 2,
+        borderColor: Colors.primary400, 
+        backgroundColor:'white',
+        padding:'5%',        
     }
 })
