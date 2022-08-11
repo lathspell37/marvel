@@ -5,22 +5,25 @@ import { Alert } from "react-native";
 
 
 async function getCharacters(){
+    
     let getChars = []
-    await api.get('/v1/public/characters', {
+     await api.get('/v1/public/characters', {
         params:{
             ...apiKey,
-            limit:1,             
+            limit:10,             
         }
     }).then(response => 
     {
-        getChars = response.data.data.results                
+        getChars = response.data.data.results        
+        return getChars;
+            
     } 
     ).catch(()=>{
         Alert.alert('Error on load')
-    }).finally(()=> {
-        return getChars;        
     })
+
     return getChars;
+    
 }
 
 export default getCharacters;
