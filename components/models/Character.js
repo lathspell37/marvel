@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {Colors} from '../../constants/colors';
 import CardItem from "../UI/Card";
 import getCharacters from "../API/requests";
+import {format as prettyFormat} from 'pretty-format';
 
 function Character(){
     const [get, setGet] = useState([])
@@ -20,7 +21,7 @@ function Character(){
          }) 
     },[])
     
-    console.log(get);
+    console.log(prettyFormat(get));
     
 
     return (

@@ -10,7 +10,7 @@ async function getCharacters(){
      await api.get('/v1/public/characters', {
         params:{
             ...apiKey,
-            limit:10,             
+            limit:1,             
         }
     }).then(response => 
     {
