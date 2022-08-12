@@ -3,18 +3,17 @@ import api from "../../config/api";
 import { Alert } from "react-native";
 
 
-
 async function getCharacters(){
     
     let getChars = []
      await api.get('/v1/public/characters', {
         params:{
             ...apiKey,
-            limit:2,             
+            limit:30,             
         }
     }).then(response => 
     {
-        getChars = response.data.data.results        
+        getChars = response.data.data.results 
         return getChars;
             
     } 

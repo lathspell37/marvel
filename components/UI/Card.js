@@ -1,14 +1,15 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
-import {Card,Title} from 'react-native-paper';
+import {Card,Paragraph,Title} from 'react-native-paper';
 import React from 'react';
 import Button from '../UI/Button';
 import { Colors } from '../../constants/colors';
 
-function CardItem({title, onPress, img}){
+function CardItem({title, onPress, img, paragraph}){
     return(
         <Card style={styles.cardContainer} onPress={onPress}>
             <Card.Content style={styles.titleContainer}>
             <Title style={styles.title}>{title}</Title>
+            <Paragraph>{paragraph}</Paragraph>
             </Card.Content>
             <Card.Cover 
             source={img}
