@@ -3,14 +3,14 @@ import React, {useEffect, useState} from 'react';
 import {Colors} from '../../constants/colors';
 import CardItem from "../UI/Card";
 import getCharacters from "../API/requests";
-
+import CharacterCard from "../UI/CharacterCard";
 import Loading from '../UI/Loading'
+import {Avatar} from 'react-native-paper';
 
 
 function Character(){
     const [get, setGet] = useState([]);
     const [load,setLoad] = useState(true);
-
 
     async function getHeroes(){
         return await getCharacters();
@@ -24,39 +24,43 @@ function Character(){
          }) 
     },[])    
 
+
+
+
+     
     return (
-        <ScrollView>
+        <ScrollView style={styles.container}>
            {load ? <Loading /> : get.map((data)=>{
 
             const imgPath=data.thumbnail.path + "." + data.thumbnail.extension   
 
             return (
-                <View style={styles.container} >
-                  <Text style={styles.txt} >{data.name}</Text>
-                    <Text style={styles.txt} >{data.description}</Text>
-                    <Image style={styles.img} source={{uri: imgPath}} />
-                    <Text style={styles.txt} >{data.comics.items.map((item)=>{
-                        return(
-                            <Text style={styles.txt} >{item.name}</Text>
-                        )
-                    })}</Text>
-                    <Text style={styles.txt} >{data.stories.items.map((item)=>{
-                        return(
-                            <Text style={styles.txt} >{item.name}</Text>
-                        )
-                    })}</Text>
-                    <Text style={styles.txt} >{data.events.items.map((item)=>{
-                        return(
-                            <Text style={styles.txt} >{item.name}</Text>
-                        )
-                    })}</Text>
-                    <Text style={styles.txt} >{data.series.items.map((item)=>{
-                        return(
-                            <Text style={styles.txt} >{item.name}</Text>
-                        )
-                    })}</Text>
-                </View>
-            
+                <CharacterCard title={data.name} 
+                img={imgPath}
+                description={data.description}
+                comics={data.comics.items.map((item)=>{
+                    return(
+                        <Text>{item.name + '\n'}</Text>
+                    )
+                })}
+                events={data.events.items.map((item)=>{
+                    return(
+                        <Text>{item.name + '\n'}</Text>
+                    )
+                })} 
+                stories={data.stories.items.map((item)=>{
+                    return(
+                        <Text>{item.name + '\n'}</Text>
+                    )
+                })}
+                series={data.series.items.map((item)=>{
+                    return(
+                        <Text>{item.name + '\n'}</Text>
+                    )
+                })}
+                />
+                
+
             )
            }) }
         </ScrollView>
@@ -66,15 +70,10 @@ function Character(){
 export default Character;
 
 const styles = StyleSheet.create({
-    img:{
-        width:150,
-        height:150,
-    },
     container:{
-        alignItems:'center',
-        justifyContent:'center'
+        backgroundColor:Colors.primary100
     },
     txt:{
-        margin:'5%'
+        fontSize:16,        
     }
 })
