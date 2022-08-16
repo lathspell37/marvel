@@ -3,18 +3,28 @@ import React, {useEffect, useState} from 'react';
 import {Colors} from '../../constants/colors';
 import CardItem from "../UI/Card";
 import getCharacters from "../API/requests";
+import { getCharacterByName } from "../API/requests";
 import CharacterCard from "../UI/CharacterCard";
 import Loading from '../UI/Loading'
-import {Avatar} from 'react-native-paper';
+import { Searchbar } from 'react-native-paper';
+import {format as prettyFormat} from 'pretty-format';
 
 
 function Character(){
     const [get, setGet] = useState([]);
+    const [getName, setGetName] = useState([]);
     const [load,setLoad] = useState(true);
 
+    const [searchQuery, setSearchQuery] = useState('');
+    const onChangeSearch = query => setSearchQuery(query);
+    
     async function getHeroes(){
         return await getCharacters();
     }
+
+    /* async function getHeroesByName(name){
+        return await getCharacterByName(name);
+    } */
     
 
     useEffect(()=>{
@@ -24,44 +34,61 @@ function Character(){
          }) 
     },[])    
 
-
-
-
-     
+    function searchByName(){
+        getCharacterByName(searchQuery).then((heroesByNames)=>{                      
+            heroesByNames[0] ? setGet(heroesByNames[0]) : null                
+            setLoad(false)
+         }).catch((err)=>{
+            console.log(err);
+         })
+ 
+    }
     return (
         <ScrollView style={styles.container}>
+           {!load ? <Searchbar 
+           style={styles.search}
+           placeholder="Search"
+           onIconPress={searchByName}
+           onChangeText={onChangeSearch}
+           icon={require('../../assets/images/search.png')}
+           iconColor={Colors.primary100}           
+           clearIcon={require('../../assets/images/delete.png')}   /> : null} 
            {load ? <Loading /> : get.map((data)=>{
-
+            
             const imgPath=data.thumbnail.path + "." + data.thumbnail.extension   
-
+            
             return (
-                <CharacterCard title={data.name} 
-                img={imgPath}
-                description={data.description}
-                comics={data.comics.items.map((item)=>{
-                    return(
-                        <Text>{item.name + '\n'}</Text>
-                    )
-                })}
-                events={data.events.items.map((item)=>{
-                    return(
-                        <Text>{item.name + '\n'}</Text>
-                    )
-                })} 
-                stories={data.stories.items.map((item)=>{
-                    return(
-                        <Text>{item.name + '\n'}</Text>
-                    )
-                })}
-                series={data.series.items.map((item)=>{
-                    return(
-                        <Text>{item.name + '\n'}</Text>
-                    )
-                })}
-                />
                 
+                <View>                    
+                    <CharacterCard title={data.name} 
+                    img={imgPath}
+                    description={data.description}
+                    comics={data.comics.items.map((item)=>{
+                        return(
+                            <Text>{item.name + '\n'}</Text>
+                        )
+                    })}
+                    events={data.events.items.map((item)=>{
+                        return(
+                            <Text>{item.name + '\n'}</Text>
+                        )
+                    })} 
+                    stories={data.stories.items.map((item)=>{
+                        return(
+                            <Text>{item.name + '\n'}</Text>
+                        )
+                    })}
+                    series={data.series.items.map((item)=>{
+                        return(
+                            <Text>{item.name + '\n'}</Text>
+                        )
+                    })}
+                    />                   
+                </View>
+
 
             )
+            
            }) }
         </ScrollView>
     )
@@ -75,5 +102,12 @@ const styles = StyleSheet.create({
     },
     txt:{
         fontSize:16,        
+    },
+    search:{
+        borderRadius:15,
+        borderWidth:2,
+        borderColor:Colors.primary400,
+        marginTop:'3%',
+        marginHorizontal:'5%'
     }
 })

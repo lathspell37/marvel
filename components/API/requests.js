@@ -25,4 +25,24 @@ async function getCharacters(){
     
 }
 
+export async function getCharacterByName(name){
+    let getCharsByName = []    
+    await api.get(`/v1/public/characters?name=${name}`, {
+       params:{
+           ...apiKey                     
+       }
+   }).then(response => 
+   {
+       getCharsByName.push(response.data.data.results) 
+       return getCharsByName;
+           
+   } 
+   ).catch(()=>{
+       Alert.alert('Error on load')
+   })
+
+   return getCharsByName;
+}
+
 export default getCharacters;
+
