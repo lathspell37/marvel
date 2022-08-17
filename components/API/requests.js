@@ -46,3 +46,24 @@ export async function getCharacterByName(name){
 
 export default getCharacters;
 
+export async function getComics(){
+    
+    let getComics = []
+     await api.get('/v1/public/comics', {
+        params:{
+            ...apiKey,
+            limit:2,             
+        }
+    }).then(response => 
+    {
+        getComics = response.data.data.results 
+        return getComics;
+            
+    } 
+    ).catch(()=>{
+        Alert.alert('Error on load')
+    })
+
+    return getComics;
+    
+}
