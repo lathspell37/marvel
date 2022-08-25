@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         maxHeight:120,
         maxWidth:45,
         margin:'2%',
-        marginTop:'40%'        
+        marginTop:'10%'        
     },
     logo:{
         maxHeight:175,
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     logoContainer:{
-        marginTop:'40%',       
+        marginVertical:'10%',       
     }
 })

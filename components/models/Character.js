@@ -1,13 +1,11 @@
 import { StyleSheet, View, Text, Image, ScrollView, ActivityIndicator } from "react-native";
 import React, {useEffect, useState} from 'react';
 import {Colors} from '../../constants/colors';
-import CardItem from "../UI/Card";
 import getCharacters from "../API/requests";
 import { getCharacterByName } from "../API/requests";
 import CharacterCard from "../UI/CharacterCard";
 import Loading from '../UI/Loading'
 import { Searchbar } from 'react-native-paper';
-import {format as prettyFormat} from 'pretty-format';
 
 
 function Character(){
@@ -21,11 +19,7 @@ function Character(){
     async function getHeroes(){
         return await getCharacters();
     }
-
-    /* async function getHeroesByName(name){
-        return await getCharacterByName(name);
-    } */
-    
+   
 
     useEffect(()=>{
          getHeroes().then((heroes)=>{
@@ -63,6 +57,11 @@ function Character(){
                     <CharacterCard title={data.name} 
                     img={imgPath}
                     description={data.description}
+                    headerOne={'Description: '}
+                    headerTwo={'Comics: '}
+                    headerThree={'Events: '}
+                    headerFour={'Series: '}
+                    headerFive={'Stories: '}
                     comics={data.comics.items.map((item)=>{
                         return(
                             <Text>{item.name + '\n'}</Text>

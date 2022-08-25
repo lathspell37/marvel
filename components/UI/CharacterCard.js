@@ -4,7 +4,7 @@ import {Card,Paragraph,Title, Button} from 'react-native-paper';
 import { Colors } from '../../constants/colors';
 
 
-function CharacterCard({title, events, comics, img, series, stories, description}){
+function CharacterCard({title, events, comics, img, series, stories, description, headerOne,headerTwo,headerThree,headerFour,headerFive}){
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -23,15 +23,15 @@ function CharacterCard({title, events, comics, img, series, stories, description
                         <Card.Title style={styles.title} title={title} />
                         <Card.Cover style={styles.cover} source={{ uri: img }} />
                         <Card.Content>
-                            <Paragraph style={styles.headerTxt} >Description: </Paragraph>
+                            <Paragraph style={styles.headerTxt} >{headerOne}</Paragraph> 
                             <Paragraph>{description}</Paragraph>
-                            <Paragraph style={styles.headerTxt} >Comics: </Paragraph>
+                            <Paragraph style={styles.headerTxt} >{headerTwo}</Paragraph> 
                             <Paragraph>{comics}</Paragraph>
-                            <Paragraph style={styles.headerTxt} >Events: </Paragraph>
+                            <Paragraph style={styles.headerTxt} >{headerThree}</Paragraph> 
                             <Paragraph>{events}</Paragraph>
-                            <Paragraph style={styles.headerTxt} >Series: </Paragraph>
+                            <Paragraph style={styles.headerTxt} >{headerFour}</Paragraph>
                             <Paragraph>{series}</Paragraph>
-                            <Paragraph style={styles.headerTxt} >Stories: </Paragraph>
+                            <Paragraph style={styles.headerTxt} >{headerFive}</Paragraph> 
                             <Paragraph>{stories}'</Paragraph>
                         </Card.Content>
                         <Card.Actions>

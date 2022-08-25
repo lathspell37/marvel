@@ -52,7 +52,7 @@ export async function getComics(){
      await api.get('/v1/public/comics', {
         params:{
             ...apiKey,
-            limit:2,             
+            limit:100,             
         }
     }).then(response => 
     {

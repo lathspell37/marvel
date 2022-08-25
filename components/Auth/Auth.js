@@ -6,7 +6,7 @@ import Input from "../UI/Input";
 import Images from "../UI/Images";
 import Loading from "../UI/Loading";
 import { Colors } from "../../constants/colors";
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import auth from "@react-native-firebase/auth";
 
 function Auth(){
@@ -50,35 +50,38 @@ function Auth(){
     }
     
     return(
-        <View style={styles.container}>
-            <View style={styles.imgContainer}>
-                <Images />
-            </View>
-            <View style={styles.outerContainer}>
-                <View style={styles.inputContainer}>
-                    <Input                     
-                    placeholder={"E-Mail"} 
-                    onChangeText={setEMail}/>
-                    <Input  
-                    onChangeText={setPassword} 
-                    placeholder={"PASSWORD"}
-                    keyboardType={'numeric'}
-                    secureTextEntry={true}
-                    textContentType="newPassword"
-                     />
+        <KeyboardAwareScrollView>
+            <View  style={styles.container}>
+                <View style={styles.imgContainer}>
+                    <Images />
                 </View>
-                <View style={styles.buttonContainer}>
-                    <Button onPress={onConfirmPress} />
+                <View style={styles.outerContainer}>
+                    <View style={styles.inputContainer}>
+                        <Input                     
+                        placeholder={"E-Mail"} 
+                        onChangeText={setEMail}/>
+                        <Input  
+                        onChangeText={setPassword} 
+                        placeholder={"PASSWORD"}
+                        keyboardType={'numeric'}
+                        secureTextEntry={true}
+                        textContentType="newPassword"
+                        />
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <Button onPress={onConfirmPress} />
+                    </View>
+                </View>
+                <View style={styles.textContainer}>
+                    <Pressable onPress={onSignupText} style={({pressed}) => pressed && styles.pressedText}>
+                        <Text style={styles.text}>
+                            If you don't have an account, please tap me!
+                        </Text>
+                    </Pressable>
                 </View>
             </View>
-            <View style={styles.textContainer}>
-                <Pressable onPress={onSignupText} style={({pressed}) => pressed && styles.pressedText}>
-                    <Text style={styles.text}>
-                        If you don't have an account, please tap me!
-                    </Text>
-                </Pressable>
-            </View>
-        </View>
+           
+        </KeyboardAwareScrollView>
     )
 }
 
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
     inputContainer:{
         flexDirection:'column',
         alignItems:'center',
-        justifyContent:'center',        
+        justifyContent:'center',       
     },
     container:{       
         flex:1, 
@@ -119,7 +122,8 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center', 
         flex:1,
-        marginTop:'9%'
+        marginTop:'9%',
+        marginBottom:'20%'
     },
     pressedText:{
         opacity:0.75
