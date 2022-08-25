@@ -14,7 +14,7 @@ run:
 
   prepare emulator or physical mobile device
 
-  npx reacy-native start
+  npx react-native start
 
   npx react-native run-android (on another prompt)
 
